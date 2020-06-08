@@ -39,6 +39,16 @@ budburst_plot <- ggplot(pheno) +
   theme_classic() +
   theme(legend.position = "bottom")
 
-budburst_plot <- budburst + labs(fill = "Species")
-
+budburst_plot <- budburst_plot + labs(fill = "Species")
 ggsave(budburst_plot, filename = "figures/budburst_plot.png", height = 7, width = 8)
+
+
+
+snowmelt <- ggplot(pheno) +
+ aes(x = P1, y = P2, colour = Spp) +
+ geom_point(size = 1L) +
+ geom_smooth(span = 0.75) +
+  hrbrthemes::scale_fill_ipsum() +
+  hrbrthemes::scale_color_ipsum() +
+ labs(x = "Date of snow melt (DOY)", y = "Date of bud burst (DOY)", color = "Species") +
+ theme_minimal()
